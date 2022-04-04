@@ -6,7 +6,7 @@ import categoryReducer from "./reducers/categoryReducer";
 import recordReducer from "./reducers/recordReducer";
 import userReducer from "./reducers/userReducer";
 
-interface AppState {
+export interface AppState {
     user: UserState ;
     categories: CategoryState;
     records: RecordState
