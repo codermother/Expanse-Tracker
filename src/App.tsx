@@ -1,8 +1,9 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import SignUp from "./components/SignUp";
-import { Layout, Menu, Breadcrumb } from "antd";
+import { Layout, Menu } from "antd";
 import Login from "./components/Login";
+import Categories from "./components/Category";
 
 function App() {
   const { Header, Content, Footer } = Layout;
@@ -25,6 +26,9 @@ function App() {
         </Routes>
         <Routes>
           <Route path="/login" element={<Login />} />
+        </Routes>
+        <Routes>
+          <Route path="/categories" element={<Categories />} />
         </Routes>
       </Content>
       <Footer style={{ textAlign: "center" }}>
