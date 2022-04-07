@@ -1,9 +1,24 @@
-import { Button, Form, Input, Modal, Select, Table, Tag } from "antd";
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
+import {
+  Button,
+  Form,
+  Input,
+  Modal,
+  Select,
+  Space,
+  Spin,
+  Table,
+  Tag,
+} from "antd";
+import { useEffect, useState } from "react";
 import { SketchPicker } from "react-color";
 import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../store";
-import { addCategory, getCategories } from "../store/actions/categoryActions";
+import {
+  addCategory,
+  getCategories,
+  updateCategory,
+} from "../store/actions/categoryActions";
 import { Category, CategoryForm } from "../types/category";
 
 type Mode = "new" | "edit";
@@ -21,6 +36,7 @@ function Categories() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [mode, setMode] = useState<Mode>("new");
   const [form, setForm] = useState<CategoryForm>(emptyForm);
+  const [updateId, setUpdateId] = useState<number | null>(null);
 
   const showModal = (mode: Mode) => {
     setIsModalVisible(true);
@@ -28,17 +44,23 @@ function Categories() {
   };
 
   const handleOk = () => {
-    //According to mode value call create or update action creator function
-    dispatch(addCategory(form));
+    // Mode degerine gore create or update action creator fonksiyonu cagir
+    if (mode === "new") dispatch(addCategory(form));
+    else if (mode === "edit" && typeof updateId === "number")
+      dispatch(updateCategory(form, updateId));
+    /*   else if (mode === "delete" && typeof deleteId === "number")
+      dispatch(deleteCategory(deleteId)); */
     setIsModalVisible(false);
     setMode("new");
     setForm(emptyForm);
+    setUpdateId(null);
   };
 
   const handleCancel = () => {
     setIsModalVisible(false);
     setMode("new");
     setForm(emptyForm);
+    setUpdateId(null);
   };
 
   const columns = [
@@ -55,21 +77,28 @@ function Categories() {
         return <Tag color={category.color}>{text.toUpperCase()}</Tag>;
       },
     },
-    /*  {
+    {
       title: "Action",
       key: "action",
-      render: (text, record) => (
+      render: (text: string, category: Category) => (
         <Space size="middle">
-          <a>Invite {record.name}</a>
-          <a>Delete</a>
+          <EditOutlined
+            style={{ fontSize: "16px", color: "#08c" }}
+            onClick={() => {
+              showModal("edit");
+              setForm(category);
+              setUpdateId(category.id);
+            }}
+          />
+          <DeleteOutlined style={{ color: "#c20808" }} />
         </Space>
       ),
-    }, */
+    },
   ];
 
   const dispatch = useDispatch();
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     dispatch(getCategories());
   }, []);
 
@@ -114,7 +143,7 @@ function Categories() {
         </Modal>
       </div>
 
-      <Table columns={columns} dataSource={data} />
+      <Table loading={loading} columns={columns} dataSource={data} />
     </>
   );
 }
