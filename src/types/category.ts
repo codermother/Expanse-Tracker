@@ -57,7 +57,6 @@ interface UPDATE_SUCCESS {
 interface UPDATE_ERROR {
   type: "UPDATE_CATEGORY_ERROR";
 }
-  
 
 interface DELETE_START {
   type: "DELETE_CATEGORY_START";
