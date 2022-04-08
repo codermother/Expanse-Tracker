@@ -11,8 +11,7 @@ import {
   updateCategory,
 } from "../store/actions/categoryActions";
 import { Category, CategoryForm } from "../types/category";
-
-type Mode = "new" | "edit" | "delete";
+import { Mode } from "../types/general";
 
 const emptyForm: CategoryForm = {
   name: "",
