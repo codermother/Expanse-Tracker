@@ -1,15 +1,5 @@
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
-import {
-  Button,
-  Form,
-  Input,
-  Modal,
-  Select,
-  Space,
-  Spin,
-  Table,
-  Tag,
-} from "antd";
+import { Button, Form, Input, Modal, Select, Space, Table, Tag } from "antd";
 import { useEffect, useState } from "react";
 import { SketchPicker } from "react-color";
 import { useDispatch, useSelector } from "react-redux";
@@ -46,7 +36,7 @@ function Categories() {
   };
 
   const handleOk = () => {
-    // Mode degerine gore create or update action creator fonksiyonu cagir
+    // Call create or update action creator function according to type of mode
     if (mode === "new") dispatch(addCategory(form));
     else if (mode === "edit" && typeof updateId === "number")
       dispatch(updateCategory(form, updateId));

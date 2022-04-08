@@ -1,11 +1,5 @@
 import { ThunkDispatch } from "redux-thunk";
-
-export interface Category {
-    id: number;
-    name: string;
-    type: string;
-    color: string;
-}
+import { Category } from "./category";
 
 export interface RecordState {
   data: Record[];
@@ -40,6 +34,7 @@ interface GET_SUCCESS {
 interface GET_ERROR {
   type: "GET_RECORDS_ERROR";
 }
+
 
 interface ADD_START {
   type: "ADD_RECORD_START";

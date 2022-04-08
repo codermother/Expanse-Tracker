@@ -4,6 +4,7 @@ import SignUp from "./components/SignUp";
 import { Layout, Menu } from "antd";
 import Login from "./components/Login";
 import Categories from "./components/Category";
+import Records from "./components/Records";
 
 function App() {
   const { Header, Content, Footer } = Layout;
@@ -29,6 +30,9 @@ function App() {
         </Routes>
         <Routes>
           <Route path="/categories" element={<Categories />} />
+        </Routes>
+        <Routes>
+          <Route path="/records" element={<Records />} />
         </Routes>
       </Content>
       <Footer style={{ textAlign: "center" }}>
