@@ -1,37 +1,35 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import SignUp from "./components/SignUp";
-import { Layout, Menu } from "antd";
+import { Layout } from "antd";
 import Login from "./components/Login";
 import Categories from "./components/Category";
 import Records from "./components/Records";
+import AppHeader from "./components/AppHeader";
 
 function App() {
-  const { Header, Content, Footer } = Layout;
+  const { Content, Footer } = Layout;
+  const navigate = useNavigate();
+  /* 
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      navigate("/");
+    } else {
+      navigate("/login");
+    }
+  }, []); */
+
   return (
     <Layout>
-      <Header style={{ position: "fixed", zIndex: 1, width: "100%" }}>
-        <div className="logo" />
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["2"]}>
-          <Menu.Item key="1">nav 1</Menu.Item>
-          <Menu.Item key="2">nav 2</Menu.Item>
-          <Menu.Item key="3">nav 3</Menu.Item>
-        </Menu>
-      </Header>
+      <AppHeader />
       <Content
         className="site-layout"
         style={{ padding: "0 250px", marginTop: 164 }}
       >
         <Routes>
           <Route path="/register" element={<SignUp />} />
-        </Routes>
-        <Routes>
           <Route path="/login" element={<Login />} />
-        </Routes>
-        <Routes>
           <Route path="/categories" element={<Categories />} />
-        </Routes>
-        <Routes>
           <Route path="/records" element={<Records />} />
         </Routes>
       </Content>
