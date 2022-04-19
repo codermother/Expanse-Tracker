@@ -61,7 +61,6 @@ interface UPDATE_ERROR {
   type: "UPDATE_RECORD_ERROR";
 }
 
-
 interface DELETE_START {
   type: "DELETE_RECORD_START";
 }
