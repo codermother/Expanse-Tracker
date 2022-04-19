@@ -213,7 +213,7 @@ function Records() {
 
                 {categories.map((category) => {
                   return (
-                    <Select.Option value={category.id}>
+                    <Select.Option value={category.id} key={category.id}>
                       {category.name}
                     </Select.Option>
                   );
@@ -225,7 +225,12 @@ function Records() {
           <>Are you Sure?</>
         ) : null}
       </Modal>
-      <Table loading={loading} columns={columns} dataSource={data} />
+      <Table
+        loading={loading}
+        columns={columns}
+        dataSource={data}
+        rowKey="id"
+      />
     </>
   );
 }

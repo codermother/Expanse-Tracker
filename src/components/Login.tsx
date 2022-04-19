@@ -29,12 +29,12 @@ function Login() {
     data.username && showSuccess("You have succesfully logged in");
   }, [data.username]);
 
-  /*   useEffect(() => {
+  useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      navigate("/");
+      navigate("/categories");
     }
-  }, [data]); */
+  }, [data]);
 
   return (
     <Form
