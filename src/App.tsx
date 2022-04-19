@@ -5,19 +5,19 @@ import Login from "./components/Login";
 import Categories from "./components/Category";
 import Records from "./components/Records";
 import AppHeader from "./components/AppHeader";
+import Logout from "./components/Logout";
+import { useEffect } from "react";
 
 function App() {
   const { Content, Footer } = Layout;
   const navigate = useNavigate();
-  /* 
+
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
       navigate("/");
-    } else {
-      navigate("/login");
     }
-  }, []); */
+  }, []);
 
   return (
     <Layout>
@@ -29,6 +29,7 @@ function App() {
         <Routes>
           <Route path="/register" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/logout" element={<Logout />} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/records" element={<Records />} />
         </Routes>

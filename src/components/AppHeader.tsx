@@ -28,7 +28,7 @@ function AppHeader() {
               <Link to="/categories">Categories </Link>
             </Menu.Item>
             <Menu.Item key="/logout">
-              <Link to="/">Logout </Link>
+              <Link to="/logout">Logout </Link>
             </Menu.Item>
           </>
         ) : loading === true ? null : (

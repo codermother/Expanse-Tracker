@@ -21,3 +21,8 @@ export const isLoggedIn = () => async (dispatch: UserDispatch) => {
       dispatch({ type: "IS_LOGGED_IN_ERROR"});
     }
 };
+export const logout= () => async (dispatch: UserDispatch) => {
+    localStorage.removeItem("token");
+     dispatch({ type: "LOGOUT" });
+   
+};
