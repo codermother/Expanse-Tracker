@@ -48,7 +48,6 @@ interface ADD_ERROR {
   type: "ADD_RECORD_ERROR";
 }
 
-
 interface UPDATE_START {
   type: "UPDATE_RECORD_START";
 }
@@ -61,6 +60,7 @@ interface UPDATE_SUCCESS {
 interface UPDATE_ERROR {
   type: "UPDATE_RECORD_ERROR";
 }
+
 
 interface DELETE_START {
   type: "DELETE_RECORD_START";

@@ -4,7 +4,11 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../store";
 import { getCategories } from "../store/actions/categoryActions";
-import { addRecord, getRecords } from "../store/actions/recordActions";
+import {
+  addRecord,
+  getRecords,
+  updateRecord,
+} from "../store/actions/recordActions";
 import { Category } from "../types/category";
 import { Mode } from "../types/general";
 import { Record, RecordForm } from "../types/record";
@@ -37,8 +41,9 @@ function Records() {
 
   const handleOk = () => {
     if (mode === "new") dispatch(addRecord(form));
-    /*  else if (mode === "edit" && typeof updateId === "number")
+    else if (mode === "edit" && typeof updateId === "number")
       dispatch(updateRecord(form, updateId));
+    /*
     else if (mode === "delete" && typeof deleteId === "number")
       dispatch(deleteRecord(deleteId));  */
     setIsModalVisible(false);
@@ -114,7 +119,14 @@ function Records() {
         const category_id = record.category.id;
         return (
           <Space size="middle">
-            <EditOutlined style={{ color: "#0390fc" }} onClick={() => {}} />
+            <EditOutlined
+              style={{ color: "#0390fc" }}
+              onClick={() => {
+                showModal("edit");
+                setForm({ title, amount, category_id });
+                setUpdateId(record.id);
+              }}
+            />
             <DeleteOutlined style={{ color: "#c20808" }} onClick={() => {}} />
           </Space>
         );
