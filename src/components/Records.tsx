@@ -6,6 +6,7 @@ import { AppState } from "../store";
 import { getCategories } from "../store/actions/categoryActions";
 import {
   addRecord,
+  deleteRecord,
   getRecords,
   updateRecord,
 } from "../store/actions/recordActions";
@@ -43,9 +44,8 @@ function Records() {
     if (mode === "new") dispatch(addRecord(form));
     else if (mode === "edit" && typeof updateId === "number")
       dispatch(updateRecord(form, updateId));
-    /*
     else if (mode === "delete" && typeof deleteId === "number")
-      dispatch(deleteRecord(deleteId));  */
+      dispatch(deleteRecord(deleteId));
     setIsModalVisible(false);
     setMode("new");
     setForm(emptyForm);
@@ -127,7 +127,13 @@ function Records() {
                 setUpdateId(record.id);
               }}
             />
-            <DeleteOutlined style={{ color: "#c20808" }} onClick={() => {}} />
+            <DeleteOutlined
+              style={{ color: "#c20808" }}
+              onClick={() => {
+                showModal("delete");
+                setDeleteId(record.id);
+              }}
+            />
           </Space>
         );
       },
