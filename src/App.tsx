@@ -7,6 +7,7 @@ import Records from "./components/Records";
 import AppHeader from "./components/AppHeader";
 import Logout from "./components/Logout";
 import { useEffect } from "react";
+import "./App.css";
 
 function App() {
   const { Content, Footer } = Layout;
